@@ -129,6 +129,9 @@ public class Soldat implements ISoldat{
     public int getPoints(){
         return(this.pv);
     }
+    public int getMaxPoints(){
+        return(this.maxPv);
+    }
     public int getPortee(){
         return(this.portee);
     }

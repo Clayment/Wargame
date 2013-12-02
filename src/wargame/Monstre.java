@@ -38,23 +38,20 @@ public class Monstre extends Soldat{
             if(!E.estLibre()){
                 if(E.getSoldat() instanceof Heros){
                     this.combat(m.getElement(getPos().getX(), getPos().getY()).getSoldat());
-                    break;
-                }
-                else if(E.getSoldat().pv < E.getSoldat().maxPv){
-                    this.guerir();
-                    break;
-                }
-                else{
-                    int j = (int) (Math.random()) * L.size();
-                    Position Posi = new Position(L.get(j).getPos().getX(), L.get(j).getPos().getY());
-                    this.seDeplace(Posi);
-                    break;
+                    return;
                 }
             }
         }
-    } 
+        if(this.getPoints() < this.getMaxPoints()){
+            this.guerir();
+        }
+        else{
+            int j = (int) (Math.random()) * L.size();
+            Position Posi = new Position(L.get(j).getPos().getX(), L.get(j).getPos().getY());
+            this.seDeplace(Posi);
+        }
+    }
     */
-    
     /* FIN TEST D'IA */
     
 }

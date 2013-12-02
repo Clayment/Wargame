@@ -2,6 +2,7 @@ package wargame;
 
 import java.awt.Graphics;
 
+
 /**
  * Classe gérant les différents aspects de la carte, le Fog of War, le déplacement des soldats,
  * leur mort, la fin d'une partie et les différents tours de jeu.
@@ -158,7 +159,8 @@ public class Carte implements ICarte, IConfig {
             for (int i=0; i<monstres.recensement(); i++){
                 Monstre m = (Monstre) monstres.getSoldat(i);
                     if (!m.estMort()){
-                        // Chaque monstre joue....
+                        //m.mouvMonstre(m.getAPortee(this), this);
+                        //m.nouveauTour();
                     }
             }
                 /* Reset des paramètres de tour de la map */

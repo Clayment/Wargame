@@ -6,7 +6,6 @@ package wargame;
      * @author Team 7 
      */
 
-
 public class Armee {
     private Soldat[] soldats;
     private int taille;

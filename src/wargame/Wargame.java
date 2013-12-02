@@ -22,10 +22,12 @@ public class Wargame {
         FrameJeu F = new FrameJeu(map);
         map.setFog();
         
+        
         /* Gestion des tours */
-        //while(!map.fini()){
+        while(!map.fini()){
             /* Tour des Héros */
+            
             // Attente de l'appui sur "fin du tour"
-        //}
+        }
     }    
 }

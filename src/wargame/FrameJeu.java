@@ -6,11 +6,15 @@
 
 package wargame;
 
+import java.net.URI;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,6 +43,7 @@ public class FrameJeu extends JFrame{
     private JMenuItem Quitter;
     private JMenuItem Remerciements;
     private JFrame Propos;
+    //public static int CompTours = 1;
     
     /**
      * Constructeur du frame.
@@ -57,6 +62,8 @@ public class FrameJeu extends JFrame{
         Quitter = new JMenuItem("Quitter");
         Remerciements = new JMenuItem("A propos");
         infoText = new JLabel("Passer sur une case pour obtenir des informations.");
+        
+        
         
         /* Layout et Contraints */
         this.setLayout(new GridBagLayout());
@@ -118,10 +125,15 @@ public class FrameJeu extends JFrame{
         endOfTurnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //CompTours++;
                 Carte map = panneau.getMap();
+//                if(CompTours%2 != 0){
+//                    map.tourDesMonstres();
+//                    panneau.repaint();
+//                }
                 map.tourDesMonstres();
                 panneau.repaint();
-            }
+           }
         });
         stateText.setPreferredSize(new Dimension(200,30));
         infoText.setPreferredSize(new Dimension(200,30));
