@@ -158,7 +158,7 @@ public class Carte implements ICarte, IConfig {
             for (int i=0; i<monstres.recensement(); i++){
                 Monstre m = (Monstre) monstres.getSoldat(i);
                     if (!m.estMort()){
-                        // Chaque monstre joue...
+                        // Chaque monstre joue....
                     }
             }
                 /* Reset des paramètres de tour de la map */
