@@ -88,15 +88,15 @@ public class Soldat implements ISoldat{
                     if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
                         numordre++;
                         L.add(C.getElement(xO+x, yO+y));
-                        C.getElement(xO+x, yO+y).getGraph().TEST=numordre;
+//                        C.getElement(xO+x, yO+y).getGraph().TEST=numordre;
                     }
-            for(int x = -i+1; x<=i-1;x++)
-                for(int y = -i+1; y<=i-1;y++)
-                    if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
-                        numordre--;
-                        L.remove(C.getElement(xO+x, yO+y));
-                        C.getElement(xO+x, yO+y).getGraph().TEST=0;
-                    }
+//            for(int x = -i+1; x<=i-1;x++)
+//                for(int y = -i+1; y<=i-1;y++)
+//                    if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
+//                        numordre--;
+//                        L.remove(C.getElement(xO+x, yO+y));
+//                        C.getElement(xO+x, yO+y).getGraph().TEST=0;
+//                    }
        }
        
         
