@@ -24,7 +24,7 @@ public class Carte implements ICarte, IConfig {
         // Génération de la map
         for (int x=0; x<LARGEUR_CARTE; x++)
             for (int y=0; y<HAUTEUR_CARTE; y++){
-                map[x][y] = new Element(new Position(x, y),BackgroundEnum.values()[(int)(Math.random()*300)%4]);
+                map[x][y] = new Element(new Position(x, y),BackgroundEnum.values()[(int)(Math.random()*BackgroundEnum.values().length)]);
             }
         
         // Ajout des Héros
@@ -54,6 +54,10 @@ public class Carte implements ICarte, IConfig {
             monstres.ajouteSoldat(recrue);
             map[x][y].ajouteSoldat(recrue);
         }
+    }
+    
+    public void generatMap(){
+        
     }
     
     /* GESTION DES UNITES */
@@ -218,8 +222,8 @@ public class Carte implements ICarte, IConfig {
     }
 
     /**
-     * ???
-     * @return 
+     * Méthode renvoyant le Soldat sélectionner
+     * @return Soldat Le soldat actuellement sélectionner 
      */
     public Soldat getSelected() {
         return selected;

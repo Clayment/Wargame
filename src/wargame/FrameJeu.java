@@ -163,8 +163,8 @@ public class FrameJeu extends JFrame{
     }
 
     /**
-     * 
-     * @return 
+     * Méthode retournant le JLabel en bas de page
+     * @return JLabel L'objet JLabel contenant les infos de la case survolée
      */
     public JLabel getInfoText() {
         return infoText;
