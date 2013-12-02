@@ -13,7 +13,7 @@ public class Carte implements ICarte, IConfig {
     private Element[][] map;
     public Armee heros;
     public Armee monstres;
-    private Soldat selected;
+    private Soldat selected; 
     
     
     /**
