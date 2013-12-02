@@ -1,6 +1,6 @@
 package wargame;
 
-/**
+    /**
      * Classe gérant tous les aspects de l'armée, les soldats, leur quantité, l'armée est-elle toujours debout ou non.
      * 
      * @author Team 7 

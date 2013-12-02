@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Clayment
+ * @author Team 7
  */
 public class ISprite {
     

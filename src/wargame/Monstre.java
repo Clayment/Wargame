@@ -32,7 +32,7 @@ public class Monstre extends Soldat{
     
     /* TEST D'IA */
     
-    /*
+    
     public void mouvMonstre(ArrayList<Element> L, Carte m){
         for(Element E : L){
             if(!E.estLibre()){
@@ -51,7 +51,7 @@ public class Monstre extends Soldat{
             this.seDeplace(Posi);
         }
     }
-    */
+    
     /* FIN TEST D'IA */
     
 }

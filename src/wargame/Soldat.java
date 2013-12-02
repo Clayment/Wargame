@@ -35,6 +35,7 @@ public class Soldat implements ISoldat{
         }
         joueTour();
     }
+    
     private int attaque(Soldat soldat){
         int maxDegats = 0;
         /* Combat au CaC */
@@ -52,12 +53,15 @@ public class Soldat implements ISoldat{
         int degats = (int) (Math.random() * maxDegats) + 1;
         return(degats);
     }
+    
     public void blesser(int degats){
         this.pv -= degats;
     }
+    
     public void guerir(){
         this.soigner((int) (Math.random() * ISoldat.MAX_HEAL) + 1);
     }
+    
     public void soigner(int soin){
         this.pv += soin;
         if (this.pv > this.maxPv){
@@ -69,6 +73,7 @@ public class Soldat implements ISoldat{
     public void seDeplace(Position newPos){
         this.pos = new Position(newPos.getX(), newPos.getY());
     }
+    
     public int distance(Soldat soldat){
         Position posEnnemi = soldat.getPos();
         double dx = Math.abs(pos.getX() - posEnnemi.getX());
@@ -83,23 +88,25 @@ public class Soldat implements ISoldat{
         int yO = this.getPos().getY();
         int numordre = 0;
         for(int i = this.getPortee();i>=1;i--){
-            for(int x = -i; x<=i;x++)
-                for(int y = -i; y<=i;y++)
+            for(int x = -i; x<=i;x++){
+                for(int y = -i; y<=i;y++){
                     if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
                         numordre++;
                         L.add(C.getElement(xO+x, yO+y));
                         C.getElement(xO+x, yO+y).getGraph().TEST=numordre;
                     }
-            for(int x = -i+1; x<=i-1;x++)
-                for(int y = -i+1; y<=i-1;y++)
+                }
+            }
+            for(int x = -i+1; x<=i-1;x++){
+                for(int y = -i+1; y<=i-1;y++){
                     if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
                         numordre--;
                         L.remove(C.getElement(xO+x, yO+y));
                         C.getElement(xO+x, yO+y).getGraph().TEST=0;
                     }
-       }
-       
-        
+                }
+            }
+        }
         return L;
     }
     
@@ -112,12 +119,15 @@ public class Soldat implements ISoldat{
             return(true);
         }
     }
+    
     public boolean aJoue(){
         return(this.aJoue);
     }
+    
     public boolean estMort(){
         return(this.pv <= 0);
     }
+    
     public void nouveauTour(){
         if (!aJoue() && !estMort()){
             this.guerir();
@@ -129,18 +139,23 @@ public class Soldat implements ISoldat{
     public int getPoints(){
         return(this.pv);
     }
+    
     public int getMaxPoints(){
         return(this.maxPv);
     }
+    
     public int getPortee(){
         return(this.portee);
     }
+    
     public int getPuissance(){
         return(this.puissance);
     }
+    
     public int getTir(){
         return(this.tir);
     }
+    
     public Position getPos(){
         return(this.pos);
     }
@@ -148,6 +163,4 @@ public class Soldat implements ISoldat{
     public SoldatEnum getSprite() {
         return sprite;
     }
-
-    
 }
