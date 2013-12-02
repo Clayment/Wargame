@@ -24,7 +24,7 @@ public class Carte implements ICarte, IConfig {
         // Génération de la map
         for (int x=0; x<LARGEUR_CARTE; x++)
             for (int y=0; y<HAUTEUR_CARTE; y++){
-                map[x][y] = new Element(new Position(x, y),BackgroundEnum.values()[(int)(Math.random()*BackgroundEnum.values().length)]);
+                map[x][y] = new Element(new Position(x, y),BackgroundEnum.values()[(int)(Math.random()*4)]);
             }
         
         // Ajout des Héros
@@ -54,10 +54,30 @@ public class Carte implements ICarte, IConfig {
             monstres.ajouteSoldat(recrue);
             map[x][y].ajouteSoldat(recrue);
         }
+        
+        // Test GEN MAP
+        generateMap();
     }
     
-    public void generatMap(){
+     /**
+     * Générateur de la carte.
+     */
+    public void generateMap(){
+        for(int x = 0; x < LARGEUR_CARTE; x++){
+            for(int y = 0; y < HAUTEUR_CARTE; y++){
+                map[x][y].setType(BackgroundEnum.plain);
+            }
+        }
+        int factTaille = IConfig.LARGEUR_CARTE * IConfig.HAUTEUR_CARTE;
+        int nbNodeWater =(int)((int) (factTaille / IConfig.FREQ_WATER));
+        nbNodeWater = IConfig.MIN_WATER + (int)(Math.random() * nbNodeWater);
         
+        int nbNodeMountain =(int)((int) (factTaille / IConfig.FREQ_MOUNTAIN));
+        nbNodeMountain = IConfig.MIN_MOUNTAIN + (int)(Math.random() * nbNodeMountain);
+        
+        int nbNodeForest =(int)((int) (factTaille / IConfig.FREQ_FOREST));
+        nbNodeForest = IConfig.MIN_FOREST + (int)(Math.random() * nbNodeForest);
+        System.out.println(nbNodeForest);
     }
     
     /* GESTION DES UNITES */
