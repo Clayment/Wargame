@@ -27,7 +27,9 @@ public class Soldat implements ISoldat{
     /* COMBAT */
     public void combat(Soldat soldat){
         // Attaque
-        soldat.blesser(attaque(soldat));
+        if(!estMort() && !soldat.estMort()){
+            soldat.blesser(attaque(soldat));
+        }
         
         //riposte de l'ennemi
         if (!soldat.estMort()){           /* Est ce vraiment utile et important ? :/ */

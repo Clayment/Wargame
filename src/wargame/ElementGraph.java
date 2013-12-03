@@ -75,12 +75,14 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         /* Draw terrain*/
         if(e.isFoW()){
             this.drawTerrain(g, BackgroundEnum.fow);  
-        }else{
+        }
+        else{
             this.drawTerrain(g, e.getType());
         }
         /* Draw Soldat*/
         if(!e.estLibre()){
             if(e.getSoldat().estMort()){
+                panelPere.getMap().mort(e.getSoldat());
                 this.drawSoldat(g, SoldatEnum.dead);
             }
             else{

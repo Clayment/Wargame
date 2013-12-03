@@ -12,6 +12,7 @@ public class Element implements IConfig {
     protected BackgroundEnum type;
     protected ElementGraph graph;
     protected int vu = 0;
+    private boolean tombstone = false;
     
     
     /**
@@ -54,6 +55,12 @@ public class Element implements IConfig {
      */
     public void enleveSoldat(){
         this.soldat = null;
+    }
+    
+    
+    public void mortSoldat(){
+        this.enleveSoldat();
+        this.tombstone=true;
     }
     
     /**
@@ -148,5 +155,8 @@ public class Element implements IConfig {
         }
     }
     
+    public boolean haveTombstone(){
+        return(this.tombstone);
+    }
     
 }

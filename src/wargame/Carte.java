@@ -92,7 +92,7 @@ public class Carte implements ICarte, IConfig {
      */
     public void mort(Soldat perso){
         Position p = perso.getPos();
-        getElement(p.getX(), p.getY()).enleveSoldat();
+        getElement(p.getX(), p.getY()).mortSoldat();
     }
     
     /* GESTION DU CHAMP DE BATAILLE */
@@ -159,8 +159,7 @@ public class Carte implements ICarte, IConfig {
             for (int i=0; i<monstres.recensement(); i++){
                 Monstre m = (Monstre) monstres.getSoldat(i);
                     if (!m.estMort()){
-                        //m.mouvMonstre(m.getAPortee(this), this);
-                        //m.nouveauTour();
+                        m.mouvMonstre(m.getAPortee(this), this);
                     }
             }
                 /* Reset des paramètres de tour de la map */
@@ -236,8 +235,6 @@ public class Carte implements ICarte, IConfig {
      * @return L'opération s'est-elle bien passée ?
      */
     public boolean actOn(int x, int y){
-        System.out.println("Portee : " + this.selected.getPortee());
-        System.out.println("distance:" + this.selected.getPos().distance(x, y));
         if (this.selected.getPos().distance(x, y) > this.selected.getPortee()){
             return(false);
         }

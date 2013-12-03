@@ -37,12 +37,14 @@ public class Monstre extends Soldat{
         for(Element E : L){
             if(!E.estLibre()){
                 if(E.getSoldat() instanceof Heros){
-                    this.combat(m.getElement(getPos().getX(), getPos().getY()).getSoldat());
+/* TEST */          //System.out.println(toString() + getPos().toString() + " attaque " + E.getSoldat().toString());
+                    this.combat(E.getSoldat());
                     return;
                 }
             }
         }
         if(this.getPoints() < this.getMaxPoints()){
+/* TEST */  //System.out.println(toString() + " needs a medic !!!");
             this.guerir();
         }
         else{
