@@ -206,5 +206,5 @@ public class FrameJeu extends JFrame{
         c.fill = GridBagConstraints.BOTH;
         this.add(panneau, c);
         this.pack();
-    }
+     }
 }

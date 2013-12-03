@@ -82,7 +82,8 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         if(!e.estLibre()){
             if(e.getSoldat().estMort()){
                 this.drawSoldat(g, SoldatEnum.dead);
-            }else{
+            }
+            else{
                 if(e.getSoldat() instanceof Heros)
                     this.drawSoldat(g, e.getSoldat()); //((Heros)e.getSoldat()).getSprite());
                 else if(e.getSoldat() instanceof Monstre && !e.isFoW())

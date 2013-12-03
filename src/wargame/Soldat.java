@@ -30,7 +30,7 @@ public class Soldat implements ISoldat{
         soldat.blesser(attaque(soldat));
         
         //riposte de l'ennemi
-        if (!soldat.estMort()){
+        if (!soldat.estMort()){           /* Est ce vraiment utile et important ? :/ */
             blesser(soldat.attaque(this));
         }
         joueTour();
@@ -50,7 +50,7 @@ public class Soldat implements ISoldat{
             maxDegats = 0;
         
         // Jet de dégats sur 1d{maxDegats}
-        int degats = (int) (Math.random() * maxDegats) + 1;
+        int degats = (int) (Math.random() * maxDegats);
         return(degats);
     }
     
@@ -78,7 +78,7 @@ public class Soldat implements ISoldat{
         Position posEnnemi = soldat.getPos();
         double dx = Math.abs(pos.getX() - posEnnemi.getX());
         double dy = Math.abs(pos.getY() - posEnnemi.getY());
-        int distance = (int) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+        int distance = (int) ((dx > dy)?dx:dy);
         return(distance);
     }
     
@@ -87,7 +87,9 @@ public class Soldat implements ISoldat{
         int xO = this.getPos().getX();
         int yO = this.getPos().getY();
         int numordre = 0;
-        for(int i = this.getPortee();i>=1;i--){
+        int i = this.getPortee();
+        
+        //for(int i = this.getPortee();i>=1;i--){
             for(int x = -i; x<=i;x++){
                 for(int y = -i; y<=i;y++){
                     if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
@@ -95,6 +97,8 @@ public class Soldat implements ISoldat{
                         L.add(C.getElement(xO+x, yO+y));
 //                        C.getElement(xO+x, yO+y).getGraph().TEST=numordre;
                     }
+                }
+            }
 //            for(int x = -i+1; x<=i-1;x++)
 //                for(int y = -i+1; y<=i-1;y++)
 //                    if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
@@ -102,7 +106,7 @@ public class Soldat implements ISoldat{
 //                        L.remove(C.getElement(xO+x, yO+y));
 //                        C.getElement(xO+x, yO+y).getGraph().TEST=0;
 //                    }
-       }
+       //}
        
         
         return L;

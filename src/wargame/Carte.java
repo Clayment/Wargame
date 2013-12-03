@@ -193,7 +193,8 @@ public class Carte implements ICarte, IConfig {
             if(this.getSelected()== map[x][y].getSoldat()){ 
                 this.selected = null;
                 return false;
-            }else
+            }
+            else
                 actOn(x, y);
         
         if (map[x][y].estLibre())
@@ -235,6 +236,8 @@ public class Carte implements ICarte, IConfig {
      * @return L'opération s'est-elle bien passée ?
      */
     public boolean actOn(int x, int y){
+        System.out.println("Portee : " + this.selected.getPortee());
+        System.out.println("distance:" + this.selected.getPos().distance(x, y));
         if (this.selected.getPos().distance(x, y) > this.selected.getPortee()){
             return(false);
         }
