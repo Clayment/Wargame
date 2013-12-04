@@ -133,7 +133,6 @@ public class FrameJeu extends JFrame{
 //                }
                 map.tourDesMonstres();
                 panneau.repaint();
-                System.out.println("Un nouveau jour se lève sur le champ de bataille...");
            }
         });
         stateText.setPreferredSize(new Dimension(200,30));
