@@ -135,7 +135,9 @@ public class Element implements IConfig {
      * @return FoW présent ?
      */
     public boolean isFoW() {
-        return (this.vu == 0);
+        if(FrameJeu.isFOW_ACTIV())
+            return (this.vu == 0);
+        return FrameJeu.isFOW_ACTIV();
     }
     
     /**
