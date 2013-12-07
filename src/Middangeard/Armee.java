@@ -1,4 +1,18 @@
-package wargame;
+/*
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+package Middangeard;
 
     /**
      * Classe gérant tous les aspects de l'armée, les soldats, leur quantité, l'armée est-elle toujours debout ou non.
@@ -13,7 +27,6 @@ public class Armee {
     
     /**
      * Constructeur de la classe Armee.
-     *
      * @param n nombre de soldats dans l'armee
      */
     public Armee(int n){
@@ -25,7 +38,6 @@ public class Armee {
     
     /** 
      * Compte le nombre de soldats de l'armée spécifiée en paramètre.
-     *
      * @return Effectif de l'armée
      */
     public int recensement(){
@@ -34,7 +46,6 @@ public class Armee {
     
     /**
      * Teste si l'armée est au complet ou non.
-     * 
      * @return L'armée est-elle complète ?
      */
     public boolean complete(){
@@ -43,7 +54,6 @@ public class Armee {
 
     /**
      * Teste si l'armée a été entièrement vaincue. 
-     * 
      * @return L'armée a-t-elle été décimée ?
      */
     public boolean vaincu(){
@@ -58,9 +68,7 @@ public class Armee {
     
     /**
      * Méthode ajoutant un soldat dans une armée.
-     * 
      * @param recrue Type du soldat à ajouter dans l'armée.
-     * 
      * @return Le soldat a-t-il pu être rajouté ?
      */
     public boolean ajouteSoldat(Soldat recrue){
@@ -73,9 +81,7 @@ public class Armee {
     
     /**
      * Méthode renvoyant le soldat de numéro i de l'armée.
-     * 
      * @param i Numéro du soldat à retourner.
-     * 
      * @return Le soldat de numéro i.
      */
     public Soldat getSoldat(int i){

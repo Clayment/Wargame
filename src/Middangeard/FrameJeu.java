@@ -1,10 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  */
 
-package wargame;
+package Middangeard;
 
 import java.net.URI;
 import java.awt.Dimension;
@@ -43,7 +51,7 @@ public class FrameJeu extends JFrame{
     private JMenuItem Quitter;
     private JMenuItem Remerciements;
     private JFrame Propos;
-    //public static int CompTours = 1;
+    
     
     /**
      * Constructeur du frame.
@@ -125,12 +133,7 @@ public class FrameJeu extends JFrame{
         endOfTurnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //CompTours++;
                 Carte map = panneau.getMap();
-//                if(CompTours%2 != 0){
-//                    map.tourDesMonstres();
-//                    panneau.repaint();
-//                }
                 map.tourDesMonstres();
                 panneau.repaint();
            }
@@ -160,7 +163,7 @@ public class FrameJeu extends JFrame{
         c.fill = GridBagConstraints.HORIZONTAL;
         this.add(infoText, c);
         
-        /* panel du plateau de jeu */
+        /* Panel du plateau de jeu */
         c.gridx=0;
         c.gridy=2;
         c.gridheight = c.gridwidth = GridBagConstraints.RELATIVE;
@@ -206,5 +209,5 @@ public class FrameJeu extends JFrame{
         c.fill = GridBagConstraints.BOTH;
         this.add(panneau, c);
         this.pack();
-    }
+     }
 }

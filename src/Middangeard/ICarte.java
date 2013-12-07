@@ -1,4 +1,4 @@
-package wargame;
+package Middangeard;
 
 import java.awt.Graphics;
 

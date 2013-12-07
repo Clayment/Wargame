@@ -1,0 +1,17 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}All the following code was written by the Team 7 Developers
+${licensePrefix}Clayment, DJ Pick-Up and Hiroto
+${licensePrefix}with the help of Narouherallaman for the sprites.
+${licensePrefix}This program is free software: you can redistribute it and/or modify
+${licensePrefix}it under the terms of the GNU General Public License as published by
+${licensePrefix}the Free Software Foundation, either version 3 of the License, or
+${licensePrefix}(at your option) any later version.
+${licensePrefix}This game is distributed in the hope that it will be useful,
+${licensePrefix}but WITHOUT ANY WARRANTY; without even the implied warranty of
+${licensePrefix}MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+${licensePrefix}GNU General Public License for more details.
+<#if licenseLast??>
+${licenseLast}
+</#if>

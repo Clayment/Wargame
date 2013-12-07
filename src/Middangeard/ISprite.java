@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package wargame;
+package Middangeard;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

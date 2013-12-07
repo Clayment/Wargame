@@ -4,24 +4,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/ICarte.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Obstacle.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/ISoldat.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Armee.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/FrameJeu.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Heros.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Element.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/ISprite.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Monstre.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/BackgroundEnum.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Obstacle.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Position.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Carte.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/PanneauJeu.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Armee.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/FrameJeu.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Heros.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/ElementGraph.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Element.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Wargame.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Soldat.java</file>
+            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/Monstre.java</file>
             <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/SoldatEnum.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/wargame/IConfig.java</file>
         </group>
     </open-files>
 </project-private>

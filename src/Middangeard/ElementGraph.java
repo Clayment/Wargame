@@ -1,10 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  */
 
-package wargame;
+package Middangeard;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,8 +23,9 @@ import java.awt.event.MouseListener;
 import javax.swing.AbstractButton;
 
 /**
- *
- * @author Clayment
+ * 
+ * 
+ * @author Team 7
  */
 public class ElementGraph extends AbstractButton implements MouseListener{
     private Element e; //Element correspondant
@@ -75,14 +84,17 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         /* Draw terrain*/
         if(e.isFoW()){
             this.drawTerrain(g, BackgroundEnum.fow);  
-        }else{
+        }
+        else{
             this.drawTerrain(g, e.getType());
         }
         /* Draw Soldat*/
         if(!e.estLibre()){
             if(e.getSoldat().estMort()){
-                this.drawSoldat(g, SoldatEnum.dead);
-            }else{
+                panelPere.getMap().mort(e.getSoldat());
+                this.drawSoldat(g, SoldatEnum.dead);  /* En cause pour l'affichage des tombes chez les monstres uniquement. */
+            }
+            else{
                 if(e.getSoldat() instanceof Heros)
                     this.drawSoldat(g, e.getSoldat()); //((Heros)e.getSoldat()).getSprite());
                 else if(e.getSoldat() instanceof Monstre && !e.isFoW())
@@ -199,6 +211,4 @@ public class ElementGraph extends AbstractButton implements MouseListener{
             this.repaint();
         }
     }
-    
-    
 }

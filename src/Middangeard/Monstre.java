@@ -1,4 +1,18 @@
-package wargame;
+/*
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+package Middangeard;
 
 import java.util.ArrayList;
 
@@ -30,14 +44,11 @@ public class Monstre extends Soldat{
         return(pv + "/" + maxPv + "pv " + this.race.name());
     }
     
-    /* TEST D'IA */
-    
-    
     public void mouvMonstre(ArrayList<Element> L, Carte m){
         for(Element E : L){
             if(!E.estLibre()){
                 if(E.getSoldat() instanceof Heros){
-                    this.combat(m.getElement(getPos().getX(), getPos().getY()).getSoldat());
+                    this.combat(E.getSoldat());
                     return;
                 }
             }
@@ -51,7 +62,4 @@ public class Monstre extends Soldat{
             this.seDeplace(Posi);
         }
     }
-    
-    /* FIN TEST D'IA */
-    
 }

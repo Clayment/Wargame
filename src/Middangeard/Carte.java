@@ -1,4 +1,18 @@
-package wargame;
+/*
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+package Middangeard;
 
 import java.awt.Graphics;
 
@@ -61,11 +75,8 @@ public class Carte implements ICarte, IConfig {
     
     /**
      * Méthode permettant de déplacer un soldat jusqu'à la position spécifiée.
-     * 
      * @param pos Position désirée pour le soldat spécifié en argument.
-     * 
      * @param soldat Soldat à déplacer.
-     * 
      * @return Le déplacement a-t-il été possible ?
      */
     public boolean deplaceSoldat(Position pos, Soldat soldat){
@@ -87,19 +98,17 @@ public class Carte implements ICarte, IConfig {
     
     /**
      * Supprime un soldat du champ de bataille à sa mort.
-     * 
      * @param perso Soldat à supprimer de la carte.
      */
     public void mort(Soldat perso){
         Position p = perso.getPos();
-        getElement(p.getX(), p.getY()).enleveSoldat();
+        getElement(p.getX(), p.getY()).mortSoldat();
     }
     
     /* GESTION DU CHAMP DE BATAILLE */
     
     /**
      * Méthode testant si la partie doit être terminée ou pas.
-     * 
      * @return La bataille est-elle finie ?
      */
     public boolean fini(){
@@ -108,9 +117,7 @@ public class Carte implements ICarte, IConfig {
     
     /**
      * Méthode dévoilant les dessous du Fog of War.
-     * 
      * @param pos Position de départ de la divulgation du Fog of War.
-     * 
      * @param dist Distance max de divulgation.
      */
     public void decouvrir(Position pos, int dist){
@@ -159,8 +166,7 @@ public class Carte implements ICarte, IConfig {
             for (int i=0; i<monstres.recensement(); i++){
                 Monstre m = (Monstre) monstres.getSoldat(i);
                     if (!m.estMort()){
-                        //m.mouvMonstre(m.getAPortee(this), this);
-                        //m.nouveauTour();
+                        m.mouvMonstre(m.getAPortee(this), this);
                     }
             }
                 /* Reset des paramètres de tour de la map */
@@ -193,7 +199,8 @@ public class Carte implements ICarte, IConfig {
             if(this.getSelected()== map[x][y].getSoldat()){ 
                 this.selected = null;
                 return false;
-            }else
+            }
+            else
                 actOn(x, y);
         
         if (map[x][y].estLibre())

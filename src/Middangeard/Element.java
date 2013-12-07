@@ -1,4 +1,18 @@
-package wargame;
+/*
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+package Middangeard;
 
 /**
  * Classe gérant les éléments sur une carte, obstacles, "biomes", soldats.
@@ -12,6 +26,7 @@ public class Element implements IConfig {
     protected BackgroundEnum type;
     protected ElementGraph graph;
     protected int vu = 0;
+    private boolean tombstone = false;
     
     
     /**
@@ -54,6 +69,12 @@ public class Element implements IConfig {
      */
     public void enleveSoldat(){
         this.soldat = null;
+    }
+    
+    
+    public void mortSoldat(){
+        this.enleveSoldat();
+        this.tombstone=true;
     }
     
     /**
@@ -148,5 +169,8 @@ public class Element implements IConfig {
         }
     }
     
+    public boolean haveTombstone(){
+        return(this.tombstone);
+    }
     
 }
