@@ -120,7 +120,7 @@ public class PanneauJeu extends JPanel implements ActionListener{
                         mapGraph[xO+x][yO+y].setMarkedAccessible(true);
                 }
             }
-//            this.getMap().select(map.getSelected().getCoords().getX(),map.getSelected().getCoords().getY());
+//            this.getMap().select(map.getSelected().getPos().getX(),map.getSelected().getPos().getY());
         }
         this.repaint();
     }
