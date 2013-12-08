@@ -23,7 +23,7 @@ import java.awt.event.MouseListener;
 import javax.swing.AbstractButton;
 
 /**
- * 
+ * Classe associant un élément quelconque à son équivalent graphique.
  * 
  * @author Team 7
  */
@@ -36,6 +36,11 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     private static Position lastPos; //Pour le Drag and Drop
     public int TEST;
 
+    /**
+     * Constructeur.
+     * @param e Element à construire.
+     * @param panelPere Panneau du jeu.
+     */
     public ElementGraph(Element e,PanneauJeu panelPere) {
         super();
         /*Init */
@@ -56,22 +61,42 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         this.addMouseListener(this);
     }
 
+    /**
+     * Accesseur pour l'élément.
+     * @return L'élément demandé.
+     */
     public Element getElement() {
         return e;
     }
 
+    /**
+     * Accesseur pour la GridConstraint.
+     * @return La GridConstraint demandée.
+     */
     public GridBagConstraints getGridConstraint() {
         return c;
     }
 
+    /**
+     * La case est-elle accessible ?
+     * @return Case accessible ?
+     */
     public boolean isMarkedAccessible() {
         return markedAccessible;
     }
 
+    /**
+     * Mets la case donnée en accessible ou non, en fonction de l'argument donné.
+     * @param markedAccessible Case à mettre en accessible ou non ?
+     */
     public void setMarkedAccessible(boolean markedAccessible) {
         this.markedAccessible = markedAccessible;
     }
     
+    /**
+     * Override de la fonction paintComponent dessinant le terrain, les soldats, l'accessibilité.
+     * @param g 
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -113,20 +138,36 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         
     }
     
+    /**
+     * 
+     * @param g 
+     */
     private void drawAccessible(Graphics g){
         g.drawImage(BackgroundEnum.accessible.getSprite().getImage(), 0, 0, null);
     }
     
-    
+    /**
+     * 
+     * @param g
+     * @param s 
+     */
     private void drawSoldat(Graphics g,SoldatEnum s){
         g.drawImage(s.getSprite().getImage(),0,0, null);
     }
     
+    /**
+     * 
+     */
     public void drawNumber(){
         if(TEST>0)
             this.getGraphics().drawString(""+TEST, 10, 10);
     }
     
+    /**
+     * 
+     * @param g
+     * @param s 
+     */
     private void drawSoldat(Graphics g,Soldat s){
         g.drawImage(s.sprite.getSprite().getImage(),0,0, null);
         
@@ -151,14 +192,28 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         g.setColor(Color.black);
     }
     
+    /**
+     * 
+     * @param g
+     * @param b 
+     */
     private void drawTerrain(Graphics g,BackgroundEnum b){
         g.drawImage(b.getSprite().getImage(),0,0, null);
     }
     
+    /**
+     * Méthode retournant la présence ou l'absence de FoW.
+     * @return Y a-t-il du FoW ?
+     */
     public boolean isFoW() {
         return e.isFoW();
     }
     
+    /**
+     * Réécriture de la fonction toString, affichant vide si la case est vide, sinon
+     * appelle la fonction toString de Soldat.
+     * @return 
+     */
     @Override
     public String toString(){
         if (this.e.estLibre()){
@@ -167,6 +222,10 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         return(this.e.getSoldat().toString());
     }
 
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Position pos = this.e.getPos();
@@ -183,16 +242,28 @@ public class ElementGraph extends AbstractButton implements MouseListener{
 //        }
     }
 
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void mousePressed(MouseEvent e) {
 //        System.out.println("drag:"+((ElementGraph)e.getSource()).getElement().getPos());
     }
 
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
 //        System.out.println("drop:"+this.lastPos);
     }
-
+    
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         if(!this.isFoW()){
@@ -204,6 +275,10 @@ public class ElementGraph extends AbstractButton implements MouseListener{
         lastPos = ((ElementGraph)e.getSource()).getElement().getPos();
     }
 
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         if(!this.isFoW()){

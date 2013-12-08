@@ -20,6 +20,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  * Classe mettant en place la frame du jeu.
@@ -107,6 +109,20 @@ public class FrameJeu extends JFrame{
                 repaint();
             }
         });
+
+        /* Raccourci clavier pour une nouvelle partie */
+        Nouveau.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
+        
+        
+        /* Menu Fichier, Charger */
+        
+        Charger.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.CTRL_MASK));
+        
+        
+        /* Menu Fichier, Sauvegarder */
+        
+        Sauvegarder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
+        
         
         /* Menu A propos, A propos */
         Remerciements.addActionListener(new ActionListener(){
@@ -175,8 +191,8 @@ public class FrameJeu extends JFrame{
         /* Affichage */
         this.pack();
         this.setVisible(true);
-    }
-
+    }    
+    
     /**
      * 
      * @return 

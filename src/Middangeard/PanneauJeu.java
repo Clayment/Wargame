@@ -43,6 +43,7 @@ public class PanneauJeu extends JPanel implements ActionListener{
         super();
         /* map du jeu */
         this.map = map;
+        this.map.setPanel(this);
         this.Fenetre = fenetre;
         this.setFocusable(true);
         

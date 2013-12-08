@@ -29,6 +29,9 @@ public class Carte implements ICarte, IConfig {
     public Armee heros;
     public Armee monstres;
     private Soldat selected;
+    private PanneauJeu panel;
+
+    
     
     
     /**
@@ -171,6 +174,7 @@ public class Carte implements ICarte, IConfig {
             }
                 /* Reset des paramètres de tour de la map */
             nouveauTour();
+            getPanel().repaint();
         }
     }
     
@@ -285,6 +289,13 @@ public class Carte implements ICarte, IConfig {
         return(getElement(pos.getX(), pos.getY()));
     }
 
+    public PanneauJeu getPanel() {
+        return panel;
+    }
+    
+    public void setPanel(PanneauJeu panel) {
+        this.panel = panel;
+    }
     
     @Override
     public Position trouvePositionVide() {
