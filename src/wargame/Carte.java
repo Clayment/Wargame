@@ -37,7 +37,7 @@ public class Carte implements ICarte, IConfig {
             do{
                 x = (int) (Math.random() * (IConfig.LARGEUR_CARTE / 2));
                 y = (int) (Math.random() * IConfig.HAUTEUR_CARTE);
-            }while (!map[x][y].estLibre());
+            }while (!map[x][y].estLibre() || map[x][y].getType() == BackgroundEnum.water);
 
             Heros recrue = new Heros(ISoldat.TypesH.getTypeHAlea(), new Position(x, y));
             heros.ajouteSoldat(recrue);

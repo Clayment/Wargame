@@ -60,6 +60,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
 
     public void setMarkedAccessible(boolean markedAccessible) {
+        if(this.e.getType() != BackgroundEnum.water || (!this.e.estLibre() && this.e.getSoldat() instanceof Heros))
         this.markedAccessible = markedAccessible;
     }
     
@@ -150,7 +151,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     @Override
     public String toString(){
         if (this.e.estLibre()){
-            return("empty");
+            return("Nothing Here!");
         }
         return(this.e.getSoldat().toString());
     }

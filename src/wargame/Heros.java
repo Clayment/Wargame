@@ -25,6 +25,7 @@ public class Heros extends Soldat{
      * @return La race et les PV du soldat ciblé.
      */
     public String toString(){
-        return(pv + "/" + maxPv + "pv " + this.race.name());
+        String output = this.race.name().substring(0, 1).toUpperCase() + this.race.name().substring(1).toLowerCase();
+        return(pv + "/" + maxPv + "pv " + output);
     }
 }

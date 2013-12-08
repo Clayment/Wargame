@@ -25,9 +25,9 @@ public class Wargame {
         map.setFog();
        
         /* Gestion des tours */
-        //while(!map.fini()){
+        while(!map.fini()){
             /* Tour des Héros */
             // Attente de l'appui sur "fin du tour"
-        //}
+        }
     }    
 }
