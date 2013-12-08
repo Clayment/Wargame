@@ -19,9 +19,11 @@ public class Wargame {
         // Initialisation de la carte
         System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
         Carte map = new Carte();
+        map.generateMap();
+        map.initSoldats();
         FrameJeu F = new FrameJeu(map);
         map.setFog();
-        
+       
         /* Gestion des tours */
         //while(!map.fini()){
             /* Tour des Héros */

@@ -22,11 +22,14 @@ public class Carte implements ICarte, IConfig {
     public Carte(){
         map = new Element[LARGEUR_CARTE][HAUTEUR_CARTE];
         // Génération de la map
-        for (int x=0; x<LARGEUR_CARTE; x++)
-            for (int y=0; y<HAUTEUR_CARTE; y++){
-                map[x][y] = new Element(new Position(x, y),BackgroundEnum.values()[(int)(Math.random()*4)]);
+        for(int x = 0; x < LARGEUR_CARTE; x++){
+            for(int y = 0; y < HAUTEUR_CARTE; y++){
+                map[x][y] = new Element(new Position(x, y),BackgroundEnum.plain);
             }
-        
+        }
+    }
+
+    public void initSoldats() {
         // Ajout des Héros
         heros = new Armee(NB_HEROS);
         for (int i=0; i<=NB_HEROS; i++){
@@ -40,7 +43,7 @@ public class Carte implements ICarte, IConfig {
             heros.ajouteSoldat(recrue);
             map[x][y].ajouteSoldat(recrue);
         }
-
+        
         // Ajout des monstres 
         monstres = new Armee(NB_MONSTRES);
         for (int i=0; i<=NB_MONSTRES; i++){
@@ -54,20 +57,13 @@ public class Carte implements ICarte, IConfig {
             monstres.ajouteSoldat(recrue);
             map[x][y].ajouteSoldat(recrue);
         }
-        
-        // Test GEN MAP
-        generateMap();
     }
     
      /**
      * Générateur de la carte.
      */
     public void generateMap(){
-        for(int x = 0; x < LARGEUR_CARTE; x++){
-            for(int y = 0; y < HAUTEUR_CARTE; y++){
-                map[x][y].setType(BackgroundEnum.plain);
-            }
-        }
+        
         int factTaille = IConfig.LARGEUR_CARTE * IConfig.HAUTEUR_CARTE;
         int nbNodeWater =(int)((int) (factTaille / IConfig.FREQ_WATER));
         nbNodeWater = IConfig.MIN_WATER + (int)(Math.random() * nbNodeWater);
@@ -79,18 +75,30 @@ public class Carte implements ICarte, IConfig {
         nbNodeForest = IConfig.MIN_FOREST + (int)(Math.random() * nbNodeForest);
         
         //Init position aléatoire
-        int x = (int) Math.random()*IConfig.LARGEUR_CARTE;
-        int y = (int) Math.random()*IConfig.HAUTEUR_CARTE;
+        int x0 = 0;
+        int y0 = 0;
         
         //position node
         BackgroundEnum typalea = null;
-        
+        int hau = 0;
+        int lar = 0;
         for(int i = 0; i < nbNodeWater+nbNodeForest+nbNodeMountain; i++){
+            do{
+                x0 = (int) (Math.random()*IConfig.LARGEUR_CARTE);
+                y0 = (int) (Math.random()*IConfig.HAUTEUR_CARTE);
+            }while(rangeHasObstacle(new Position(x0, y0), 1));
             typalea = BackgroundEnum.values()[(int)(Math.random() * 3) + 1];
+            hau = (int)(Math.random() * (factTaille / 150)) + 1;
+            lar = (int)(Math.random() * (factTaille / 150)) + 1;
             if((typalea == BackgroundEnum.water && nbNodeWater>0) ||
                     (typalea == BackgroundEnum.mountain && nbNodeMountain>0) ||
                     (typalea == BackgroundEnum.forest && nbNodeForest>0)){
-                
+                for(int x = -lar; x < lar; x++){
+                    for(int y = -hau; y < hau; y++){
+                        if(x0+x<IConfig.LARGEUR_CARTE && y0+y<IConfig.HAUTEUR_CARTE && x0+x>=0 && y0+y>=0)
+                            map[x0+x][y0+y].setType(typalea);
+                    } 
+                }
             }else{
                 i--;
             }
@@ -98,6 +106,21 @@ public class Carte implements ICarte, IConfig {
         
 //        System.out.println(nbNodeForest);
         
+    }
+    
+    public boolean rangeHasObstacle(Position P, int rayon){
+        int x0 = P.getX();
+        int y0 = P.getY();
+        for(int x = -rayon; x < rayon; x++){
+            for(int y = -rayon; y < rayon; y++){
+                if(x0+x<IConfig.LARGEUR_CARTE && y0+y<IConfig.HAUTEUR_CARTE && x0+x>=0 && y0+y>=0)
+                    if(map[x0+x][y0+y].getType()== BackgroundEnum.forest 
+                        || map[x0+x][y0+y].getType()== BackgroundEnum.mountain 
+                        || map[x0+x][y0+y].getType()== BackgroundEnum.water)
+                        return true;
+            } 
+        }
+        return false;
     }
     
     /* GESTION DES UNITES */

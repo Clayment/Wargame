@@ -9,7 +9,7 @@ public interface IConfig {
     int NB_HEROS = 15; int NB_MONSTRES = 30; int NB_OBSTACLES = 100;
     
     int FREQ_WATER = 100; int FREQ_MOUNTAIN = 50; int FREQ_FOREST = 40;
-    int MIN_WATER = 1; int MIN_MOUNTAIN = 2; int MIN_FOREST = 3;
+    int MIN_WATER = 3; int MIN_MOUNTAIN = 3; int MIN_FOREST = 4;
     
     Color COULEUR_NEUTRE = Color.magenta, COULEUR_TEXTE = Color.black;
     Color COULEUR_HEROS = Color.red, COULEUR_HEROS_OFF = Color.pink;
