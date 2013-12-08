@@ -16,8 +16,8 @@ package wargame;
  * Enumération des différents sprites.
  */
 public enum BackgroundEnum{
-    water ("sprite/Eau.png"),
     plain ("sprite/Plaine.png"),
+    water ("sprite/Eau.png"),
     forest ("sprite/Foret.png"),
     mountain ("sprite/Montagne.png"),
     fow ("sprite/FOW.png"),

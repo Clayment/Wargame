@@ -77,7 +77,26 @@ public class Carte implements ICarte, IConfig {
         
         int nbNodeForest =(int)((int) (factTaille / IConfig.FREQ_FOREST));
         nbNodeForest = IConfig.MIN_FOREST + (int)(Math.random() * nbNodeForest);
-        System.out.println(nbNodeForest);
+        
+        //Init position aléatoire
+        int x = (int) Math.random()*IConfig.LARGEUR_CARTE;
+        int y = (int) Math.random()*IConfig.HAUTEUR_CARTE;
+        
+        //position node
+        BackgroundEnum typalea = null;
+        
+        for(int i = 0; i < nbNodeWater+nbNodeForest+nbNodeMountain; i++){
+            typalea = BackgroundEnum.values()[(int)(Math.random() * 3) + 1];
+            if((typalea == BackgroundEnum.water && nbNodeWater>0) ||
+                    (typalea == BackgroundEnum.mountain && nbNodeMountain>0) ||
+                    (typalea == BackgroundEnum.forest && nbNodeForest>0)){
+                
+            }else{
+                i--;
+            }
+        }
+        
+//        System.out.println(nbNodeForest);
         
     }
     
