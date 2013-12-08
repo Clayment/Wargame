@@ -11,13 +11,18 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 
 /**
  * Classe mettant en place la frame du jeu.
@@ -31,14 +36,17 @@ public class FrameJeu extends JFrame{
     private JLabel stateText;
     private JMenuBar menuBar;
     private JMenu menuFichier;
-    private JButton endOfTurnButton;
     private JMenu menuPropos;
+    private JMenu menuOptions;
+    private JButton endOfTurnButton;
     private JMenuItem Nouveau;
     private JMenuItem Sauvegarder;
     private JMenuItem Charger;
     private JMenuItem Quitter;
     private JMenuItem Remerciements;
+    private JCheckBoxMenuItem FoWMenuItem;
     private JFrame Propos;
+    private static boolean FOW_ACTIV = true;
     
     /**
      * Constructeur du frame.
@@ -51,12 +59,14 @@ public class FrameJeu extends JFrame{
         menuBar = new JMenuBar();
         menuFichier = new JMenu("Fichier");
         menuPropos = new JMenu("A propos");
+        menuOptions = new JMenu("Options");
         Nouveau = new JMenuItem("Nouveau");
         Sauvegarder = new JMenuItem("Sauvegarder");
         Charger = new JMenuItem("Charger");
         Quitter = new JMenuItem("Quitter");
         Remerciements = new JMenuItem("A propos");
         infoText = new JLabel("Passer sur une case pour obtenir des informations.");
+        FoWMenuItem = new JCheckBoxMenuItem("Fog of War");
         
         /* Layout et Contraints */
         this.setLayout(new GridBagLayout());
@@ -74,12 +84,14 @@ public class FrameJeu extends JFrame{
         /* Menu bar */
         menuBar.setOpaque(true);
         menuBar.add(menuFichier);
+        menuBar.add(menuOptions);
         menuBar.add(menuPropos);
         menuFichier.add(Nouveau);
         menuFichier.add(Sauvegarder);
         menuFichier.add(Charger);
         menuFichier.addSeparator();
         menuFichier.add(Quitter);
+        menuOptions.add(FoWMenuItem);
         menuPropos.add(Remerciements);
         this.setJMenuBar(menuBar);
         
@@ -125,10 +137,25 @@ public class FrameJeu extends JFrame{
         });
         stateText.setPreferredSize(new Dimension(200,30));
         infoText.setPreferredSize(new Dimension(200,30));
-        
+        FoWMenuItem.setSelected(FrameJeu.FOW_ACTIV);
+        FoWMenuItem.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if(ie.getStateChange() == ItemEvent.SELECTED){
+                    FrameJeu.setFOW_ACTIV(true);
+                    panneau.repaint();
+                }else{
+                    FrameJeu.setFOW_ACTIV(false);
+                    panneau.repaint();
+                }
+            }
+        });
+        c.gridwidth = 2;
         /* Contrainte générale */
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.weightx = 1;
+        c.gridwidth = 2;
         
         /* Boutton fin du tour */
         c.gridx=0;
@@ -136,12 +163,21 @@ public class FrameJeu extends JFrame{
         c.fill = GridBagConstraints.HORIZONTAL;
         this.add(endOfTurnButton, c);
         
+//        c.gridwidth = 1;
         /* Label de Texte */
         c.gridx=0;
         c.gridy=1;
         c.fill = GridBagConstraints.HORIZONTAL;
         this.add(stateText, c);
         
+//        /* Boutton FoW */
+//        c.gridx=1;
+//        c.gridy=1;
+//        c.anchor = GridBagConstraints.LINE_END;
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        this.add(FoWButton, c);
+//        
+//        c.gridwidth = 2;
         /* Label d'info */
         c.gridx=0;
         c.gridy=3;
@@ -151,9 +187,9 @@ public class FrameJeu extends JFrame{
         /* panel du plateau de jeu */
         c.gridx=0;
         c.gridy=2;
-        c.gridheight = c.gridwidth = GridBagConstraints.RELATIVE;
+        c.gridheight = c.gridwidth = GridBagConstraints.REMAINDER;
         c.weighty = 1;
-        c.weightx = 1;
+        c.weightx = 2;
         c.fill = GridBagConstraints.BOTH;
         this.add(panneau, c);
         
@@ -195,4 +231,14 @@ public class FrameJeu extends JFrame{
         this.add(panneau, c);
         this.pack();
     }
+
+    public static boolean isFOW_ACTIV() {
+        return FOW_ACTIV;
+    }
+
+    public static void setFOW_ACTIV(boolean FOW_ACTIV) {
+        FrameJeu.FOW_ACTIV = FOW_ACTIV;
+    }
+     
+     
 }
