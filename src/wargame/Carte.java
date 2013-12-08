@@ -78,6 +78,7 @@ public class Carte implements ICarte, IConfig {
         int nbNodeForest =(int)((int) (factTaille / IConfig.FREQ_FOREST));
         nbNodeForest = IConfig.MIN_FOREST + (int)(Math.random() * nbNodeForest);
         System.out.println(nbNodeForest);
+        
     }
     
     /* GESTION DES UNITES */
