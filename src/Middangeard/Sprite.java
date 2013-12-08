@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  */
 
 package Middangeard;
@@ -18,17 +26,17 @@ import javax.imageio.ImageIO;
  *
  * @author Team 7
  */
-public class ISprite {
+public class Sprite {
     
     private ArrayList<URL> url;
     private ArrayList<BufferedImage> image;
 
-       /**
-     * Constructeur
+    /**
+     * Constructeur                     //TODO
      * 
      * @param url de type URL
      */
-    public ISprite(URL url) {
+    public Sprite(URL url) {
         this.url = new ArrayList<>();
         this.image = new ArrayList<>();
         this.url.add(url);
@@ -40,11 +48,11 @@ public class ISprite {
     }
     
     /**
-     * Constructeur
+     * Constructeur                                 //TODO
      * 
      * @param url de type String
      */
-    public ISprite(String url) {
+    public Sprite(String url) {
         this.url = new ArrayList<>();
         this.image = new ArrayList<>();
         this.url.add(getClass().getResource(url));
@@ -57,11 +65,11 @@ public class ISprite {
     }
     
     /**
-     * Constructeur
+     * Constructeur                         //TODO
      * 
      * @param url de type String
      */
-    public ISprite(String[] url) {
+    public Sprite(String[] url) {
         for(int i = 0; i<url.length; i++){
             this.url.add(getClass().getResource(url[i]));
             try {
@@ -75,7 +83,7 @@ public class ISprite {
 
     
     /**
-     * Getter pour URL ???.
+     * Getter pour URL ???.                         //TODO
      * 
      * @return l'URL.
      */
@@ -84,7 +92,7 @@ public class ISprite {
     }
 
     /**
-     * Getter pour l'image dans le buffer ??.
+     * Getter pour l'image dans le buffer ??.       //TODO
      * 
      * @return l'image.
      */

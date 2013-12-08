@@ -1,18 +1,26 @@
+/*
+ * All the following code was written by the Team 7 Developers
+ * Clément Horgues, Alexis Braine et Arslen Remaci
+ * with the help of Nathan Ingrao for the sprites and the tiles.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This game is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
 package Middangeard;
 
-import java.awt.Graphics;
-
+/**
+ * Interface de la carte, éléments, déplacements et mort.
+ * 
+ * @author Team 7
+ */
 public interface ICarte {
     Element getElement(Position pos);
-    Position trouvePositionVide();                                          // Trouve aléatoirement une position vide sur la carte
-    Position trouvePositionVide(Position pos);                              // Trouve une position vide choisie
-                                                                            // aléatoirement parmi les 8 positions adjacentes de pos
-    Heros trouveHeros();                                                    // Trouve aléatoirement un héros sur la carte
-    Heros trouveHeros(Position pos);                                        // Trouve un héros choisi aléatoirement
-                                                                            // parmi les 8 positions adjacentes de pos
     boolean deplaceSoldat(Position pos, Soldat soldat);
     void mort(Soldat perso);
-    boolean actionHeros(Position pos, Position pos2);
-    void jouerSoldats(PanneauJeu pj);
-    void toutDessiner(Graphics g);
 }

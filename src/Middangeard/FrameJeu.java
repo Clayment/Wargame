@@ -14,16 +14,12 @@
 
 package Middangeard;
 
-import java.net.URI;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,7 +49,7 @@ public class FrameJeu extends JFrame{
     private JMenuItem Quitter;
     private JMenuItem Remerciements;
     private JFrame Propos;
-    
+    private JFrame Fin;
     
     /**
      * Constructeur du frame.
@@ -105,7 +101,6 @@ public class FrameJeu extends JFrame{
             public void actionPerformed(ActionEvent a0){
                 Carte map = new Carte();
                 newPanneau(map);
-                map.setFog();
                 repaint();
             }
         });
@@ -161,7 +156,7 @@ public class FrameJeu extends JFrame{
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.weightx = 1;
         
-        /* Boutton fin du tour */
+        /* Bouton fin du tour */
         c.gridx=0;
         c.gridy=0;
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -194,15 +189,15 @@ public class FrameJeu extends JFrame{
     }    
     
     /**
-     * 
+     *                      //TODO
      * @return 
      */
     public JLabel getInfoText() {
         return infoText;
     }
 
-    /**
-     * 
+    /** 
+     *                      //TODO
      * @param text 
      */
     public void setInfoText(String text) {

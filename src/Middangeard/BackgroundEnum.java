@@ -31,28 +31,30 @@ public enum BackgroundEnum{
     fow ("sprite/FOW.png"),
     accessible ("sprite/Accessible.png");
     
-    private ISprite sprite;
+    private Sprite sprite;
     /**
-     * Constructeur
-     * @param url de type String
+     * Constructeur qui crée un sprite avec l'image
+     * située à l'URL spécifiée.
+     * @param url URL de l'image désirée en sprite.
      */
     private BackgroundEnum(String url) {
-        this.sprite = new ISprite(url);
+        this.sprite = new Sprite(url);
     }
     
     /**
-     * Constructeur
+     * Constructeur qui crée un sprite avec les images
+     * dont les URLs sont données dans le tableau en argument.
      * @param url de type String[]
      */
     private BackgroundEnum(String url[]) {
-         this.sprite = new ISprite(url);
+         this.sprite = new Sprite(url);
     }
 
     /**
-     * ???
-     * @return 
+     * Accesseur du sprite.
+     * @return Le sprite demandé.
      */
-    public ISprite getSprite() {
+    public Sprite getSprite() {
         return sprite;
     }
     

@@ -47,7 +47,7 @@ public class PanneauJeu extends JPanel implements ActionListener{
         this.Fenetre = fenetre;
         this.setFocusable(true);
         
-        /* Configuration du panel : taille, layout*/
+        /* Configuration du panel : taille, layout */
         this.setPreferredSize(new Dimension(
                 IConfig.LARGEUR_CARTE*IConfig.NB_PIX_CASE,
                 IConfig.HAUTEUR_CARTE*IConfig.NB_PIX_CASE));
@@ -65,7 +65,8 @@ public class PanneauJeu extends JPanel implements ActionListener{
     }
     
     /**
-     * Méthode ajoutant les éléments ???.
+     * Méthode ajoutant les éléments graphiques
+     * à la fenêtre de jeu.
      * @param E La matrice d'éléments.
      */
     public final void addElements(ElementGraph[][] E){
@@ -75,7 +76,12 @@ public class PanneauJeu extends JPanel implements ActionListener{
             }
         }
     }
-    
+
+    /**
+     * Méthode appliquant l'argument d'accessibilité
+     * à la carte.
+     * @param b Accessible ou pas ?
+     */
     public void setAllAccessible(boolean b){
         for(int x = 0; x< IConfig.LARGEUR_CARTE;x++ ){
             for(int y = 0; y< IConfig.HAUTEUR_CARTE;y++ ){
@@ -84,13 +90,24 @@ public class PanneauJeu extends JPanel implements ActionListener{
         }
     }
 
-    public void ElementClic(ElementGraph E){
+    /**
+     * Méthode affichant le contenu de la case survolée
+     * par la souris dans le bas de la carte.
+     * @param E La matrice d'éléments graphiques.
+     */
+    public void OverElement(ElementGraph E){
         if(E.isFoW())
             this.Fenetre.setInfoText("Fog of War, Even the elven eyes of Legolas can't see over here!");
         else
             this.Fenetre.setInfoText(E.toString());
     }
 
+    /**
+     * Réécriture de la méthode paintComponent,
+     * permettant ainsi d'appliquer repaint()
+     * à toutes les cases de la map.
+     * @param g 
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); 
@@ -100,22 +117,32 @@ public class PanneauJeu extends JPanel implements ActionListener{
             }
         }
     }
-
     
-    
+    /**
+     *                          //TODO
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 //        System.out.println(((ElementGraph)e.getSource()));
     }
-    
+
+    /**
+     * Accesseur pour la map.
+     * @return La map demandée.
+     */
     public Carte getMap() {
         return map;
     }    
 
+    /**
+     *                          //TODO
+     * @param e 
+     */
     public void select(ElementGraph e) {
         this.getMap().select(e.getElement().getPos().getX(),e.getElement().getPos().getY());
-        for(int x = 0; x< IConfig.LARGEUR_CARTE;x++ ){
-            for(int y = 0; y< IConfig.HAUTEUR_CARTE;y++ ){
+        for(int x = 0; x< IConfig.LARGEUR_CARTE;x++){
+            for(int y = 0; y< IConfig.HAUTEUR_CARTE;y++){
                 this.mapGraph[x][y].setMarkedAccessible(false);
             }
         }

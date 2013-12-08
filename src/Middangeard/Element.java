@@ -71,12 +71,6 @@ public class Element implements IConfig {
         this.soldat = null;
     }
     
-    
-    public void mortSoldat(){
-        this.enleveSoldat();
-        this.tombstone=true;
-    }
-    
     /**
      * Vérifie si la case ne contient pas de soldat.
      * @return Cette case contient-elle un soldat ?
@@ -106,7 +100,7 @@ public class Element implements IConfig {
     }
 
     /**
-     * Getter permettant d'obtenir un type.
+     * Getter permettant d'obtenir un type.         //TODO
      * @return Le type demandé.
      */
     public BackgroundEnum getType() {
@@ -114,7 +108,7 @@ public class Element implements IConfig {
     }
 
     /**
-     * Getter permettant d'obtenir un graphe ???.
+     * Getter permettant d'obtenir un graphe ???.   //TODO
      * @return Le graphe demandé ???.
      */
     public ElementGraph getGraph() {
@@ -122,7 +116,7 @@ public class Element implements IConfig {
     }
 
     /**
-     * Setter fixant le graphe ???.
+     * Setter fixant le graphe ???.         //TODO
      * @param graph 
      */
     public void setGraph(ElementGraph graph) {
@@ -160,7 +154,7 @@ public class Element implements IConfig {
     }
     
     /**
-     * Méthode appliquant les nouveaux tours ?.
+     * Méthode appliquant les nouveaux tours ?.     //TODO
      * @see Soldat
      */
     public void nouveauTour(){
@@ -168,9 +162,4 @@ public class Element implements IConfig {
             this.soldat.nouveauTour();
         }
     }
-    
-    public boolean haveTombstone(){
-        return(this.tombstone);
-    }
-    
 }

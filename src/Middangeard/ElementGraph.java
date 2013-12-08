@@ -139,7 +139,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                      //TODO
      * @param g 
      */
     private void drawAccessible(Graphics g){
@@ -147,7 +147,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                      //TODO
      * @param g
      * @param s 
      */
@@ -156,7 +156,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                              //TODO
      */
     public void drawNumber(){
         if(TEST>0)
@@ -164,7 +164,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                                          //TODO
      * @param g
      * @param s 
      */
@@ -193,7 +193,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                                              //TODO
      * @param g
      * @param b 
      */
@@ -223,7 +223,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
 
     /**
-     * 
+     *                          //TODO
      * @param e 
      */
     @Override
@@ -243,7 +243,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
 
     /**
-     * 
+     *                      //TODO
      * @param e 
      */
     @Override
@@ -252,7 +252,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
 
     /**
-     * 
+     *                  //TODO
      * @param e 
      */
     @Override
@@ -261,7 +261,7 @@ public class ElementGraph extends AbstractButton implements MouseListener{
     }
     
     /**
-     * 
+     *                      //TODO
      * @param e 
      */
     @Override
@@ -271,12 +271,12 @@ public class ElementGraph extends AbstractButton implements MouseListener{
             this.getGraphics().draw3DRect(1, 1, IConfig.NB_PIX_CASE-2, IConfig.NB_PIX_CASE-2,true);
             this.getGraphics().setColor(Color.BLACK);
         }
-        panelPere.ElementClic(this);
+        panelPere.OverElement(this);
         lastPos = ((ElementGraph)e.getSource()).getElement().getPos();
     }
 
     /**
-     * 
+     *                      //TODO
      * @param e 
      */
     @Override

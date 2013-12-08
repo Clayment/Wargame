@@ -131,7 +131,7 @@ public class Soldat implements ISoldat{
     }
 
     /**
-     * 
+     *                  //TODO
      * @param soldat
      * @return 
      */
@@ -144,7 +144,7 @@ public class Soldat implements ISoldat{
     }
     
     /**
-     * 
+     *                  //TODO
      * @param C
      * @return 
      */
@@ -154,27 +154,14 @@ public class Soldat implements ISoldat{
         int yO = this.getPos().getY();
         int numordre = 0;
         int i = this.getPortee();
-        
-        //for(int i = this.getPortee();i>=1;i--){
-            for(int x = -i; x<=i;x++){
-                for(int y = -i; y<=i;y++){
-                    if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
-                        numordre++;
-                        L.add(C.getElement(xO+x, yO+y));
-//                        C.getElement(xO+x, yO+y).getGraph().TEST=numordre;
-                    }
+        for(int x = -i; x<=i;x++){
+            for(int y = -i; y<=i;y++){
+                if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
+                    numordre++;
+                    L.add(C.getElement(xO+x, yO+y));
                 }
             }
-//            for(int x = -i+1; x<=i-1;x++)
-//                for(int y = -i+1; y<=i-1;y++)
-//                    if(xO+x<IConfig.LARGEUR_CARTE && yO+y<IConfig.HAUTEUR_CARTE && xO+x>=0 && yO+y>=0){
-//                        numordre--;
-//                        L.remove(C.getElement(xO+x, yO+y));
-//                        C.getElement(xO+x, yO+y).getGraph().TEST=0;
-//                    }
-       //}
-       
-        
+        }
         return L;
     }
     
@@ -216,6 +203,7 @@ public class Soldat implements ISoldat{
         if (!aJoue() && !estMort()){
             this.guerir();
         }
+        
         this.aJoue = false;
     }
     

@@ -14,8 +14,6 @@
 
 package Middangeard;
 
-import java.awt.Graphics;
-
 
 /**
  * Classe gérant les différents aspects de la carte, le Fog of War, le déplacement des soldats,
@@ -31,8 +29,6 @@ public class Carte implements ICarte, IConfig {
     private Soldat selected;
     private PanneauJeu panel;
 
-    
-    
     
     /**
      * Constructeur de la carte, génére la map, ajoute les héros et les monstres dessus.
@@ -57,6 +53,7 @@ public class Carte implements ICarte, IConfig {
             Heros recrue = new Heros(ISoldat.TypesH.getTypeHAlea(), new Position(x, y));
             heros.ajouteSoldat(recrue);
             map[x][y].ajouteSoldat(recrue);
+            decouvrir(new Position(x, y), recrue.getPortee());
         }
 
         // Ajout des monstres 
@@ -87,7 +84,7 @@ public class Carte implements ICarte, IConfig {
         Element depart = getElement(posSoldat.getX(), posSoldat.getY());
         Element arrivee = getElement(pos);
         
-        if (!arrivee.estLibre() || soldat.aJoue())                              // Si le terrain d'arrivee n'est pas libre ou si le soldat a déja employé son tour
+        if (!arrivee.estLibre() || soldat.aJoue())  // Si le terrain d'arrivee n'est pas libre ou si le soldat a déja employé son tour
             return(false);
         
         soldat.joueTour();
@@ -99,13 +96,15 @@ public class Carte implements ICarte, IConfig {
         return(true);
     }
     
+    
     /**
      * Supprime un soldat du champ de bataille à sa mort.
      * @param perso Soldat à supprimer de la carte.
      */
     public void mort(Soldat perso){
         Position p = perso.getPos();
-        getElement(p.getX(), p.getY()).mortSoldat();
+        cacher(p, perso.getPortee());
+        getElement(p.getX(), p.getY()).enleveSoldat();
     }
     
     /* GESTION DU CHAMP DE BATAILLE */
@@ -119,6 +118,15 @@ public class Carte implements ICarte, IConfig {
     }
     
     /**
+     * Méthode retournant vrai si tous les héros
+     * de la carte sont morts, faux sinon.
+     * @return Le booléen demandé.
+     */
+    public boolean herosVaincus(){
+        return(heros.vaincu());
+    }
+    
+    /**
      * Méthode dévoilant les dessous du Fog of War.
      * @param pos Position de départ de la divulgation du Fog of War.
      * @param dist Distance max de divulgation.
@@ -127,7 +135,7 @@ public class Carte implements ICarte, IConfig {
         for (int x=pos.getX() - dist; x <= pos.getX() + dist; x++){
             for (int y=pos.getY() - dist; y <= pos.getY() + dist; y++){
                 if ((x >= 0) && (x < IConfig.LARGEUR_CARTE) && (y >= 0) && (y < IConfig.HAUTEUR_CARTE)){
-                        map[x][y].decouvrir();
+                    map[x][y].decouvrir();
                 }
             }
         }
@@ -173,24 +181,12 @@ public class Carte implements ICarte, IConfig {
                     }
             }
                 /* Reset des paramètres de tour de la map */
-            nouveauTour();
-            getPanel().repaint();
         }
+        nouveauTour();  
     }
     
-    /**
-     * Méthode découvrant les zones autour des héros en fonction de leur portée.
-     */
-    public void setFog(){
-        for (int i=0; i < heros.recensement(); i++){
-            Soldat s = heros.getSoldat(i);
-            if (!s.estMort()){
-                decouvrir(s.getPos(), s.getPortee());
-            }
-        }
-    }
     
-    /* GESTION DES ÉLÉMENTS = CASES ET DES ACTION ASSOCIÉES */
+    /* GESTION DES ÉLÉMENTS = CASES ET DES ACTIONS ASSOCIÉES */
     
     /**
      * Méthode permettant de sélectionner une unité dans la carte.
@@ -231,8 +227,9 @@ public class Carte implements ICarte, IConfig {
     }
 
     /**
-     * ???
-     * @return 
+     * Renvoie le soldat qui a été cliqué (donc sélectionné),
+     * null sinon.
+     * @return Le soldat cliqué, ou null.
      */
     public Soldat getSelected() {
         return selected;
@@ -258,7 +255,6 @@ public class Carte implements ICarte, IConfig {
         }
         else{
             Soldat cible = map[x][y].getSoldat();
-            // Mais... il peut buter un allié, là ??? 0ô
             if (cible instanceof Heros){
                 return(false);
             }
@@ -271,7 +267,7 @@ public class Carte implements ICarte, IConfig {
     /* Accesseurs et mutateurs */
     
     /**
-     * Getter pour un élément de la carte en ayant les coordonnées de sa position en arguments.
+     * Accesseur pour un élément de la carte en ayant les coordonnées de sa position en arguments.
      * @param posX Coordonnée horizontale de l'élément demandé.
      * @param posY Coordonnée verticale de l'élément demandé.
      * @return L'élément demandé.
@@ -281,7 +277,7 @@ public class Carte implements ICarte, IConfig {
     }
     
     /**
-     * Getter pour un élément de la carte en ayant sa position en argument.
+     * Accesseur pour un élément de la carte en ayant sa position en argument.
      * @param pos Position de l'élément désiré.
      * @return L'élément demandé.
      */
@@ -289,46 +285,19 @@ public class Carte implements ICarte, IConfig {
         return(getElement(pos.getX(), pos.getY()));
     }
 
+    /**
+     * Accesseur retournant le panneau actuel.
+     * @return Le panneau actuel.
+     */
     public PanneauJeu getPanel() {
         return panel;
     }
-    
+
+    /**
+     * Mutateur modifiant le panneau actuel de jeu.
+     * @param panel Nouveau panneau à modifier.
+     */
     public void setPanel(PanneauJeu panel) {
         this.panel = panel;
-    }
-    
-    @Override
-    public Position trouvePositionVide() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Position trouvePositionVide(Position pos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Heros trouveHeros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Heros trouveHeros(Position pos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean actionHeros(Position pos, Position pos2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void jouerSoldats(PanneauJeu pj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void toutDessiner(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

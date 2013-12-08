@@ -4,20 +4,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/FrameJeu.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/SoldatEnum.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Obstacle.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Wargame.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/BackgroundEnum.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Soldat.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Armee.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/ElementGraph.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Monstre.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Position.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/PanneauJeu.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Heros.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Element.java</file>
-            <file>file:/C:/Users/Arslane/Documents/NetBeansProjects/LOTR/src/Middangeard/Carte.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/ElementGraph.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Element.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/FrameJeu.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Carte.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Soldat.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Heros.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Wargame.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/PanneauJeu.java</file>
+            <file>file:/home/dj/Tmp/LOTR/src/Middangeard/Armee.java</file>
         </group>
     </open-files>
 </project-private>

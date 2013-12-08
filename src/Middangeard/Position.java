@@ -93,7 +93,7 @@ public class Position implements IConfig {
     /**
      * Méthode surchargant la méthode suivante en lui permettant de prendre une position en argument.
      * @param pos Position à partir de laquelle on calcule la distance.
-     * @return ???
+     * @return ???          //TODO
      */
     public int distance(Position pos){
         return(distance(pos.getX(), pos.getY()));

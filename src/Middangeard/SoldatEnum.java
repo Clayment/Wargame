@@ -31,26 +31,30 @@ public enum SoldatEnum{
     ;
     
     
-     private ISprite sprite;
+     private Sprite sprite;
     /**
-     * Constructeur
-     * 
-     * @param url de type String
+     * Constructeur qui crée un sprite avec l'image
+     * située à l'URL spécifiée.
+     * @param url URL de l'image désirée en sprite.
      */
     private SoldatEnum(String url) {
-        this.sprite = new ISprite(url);
+        this.sprite = new Sprite(url);
     }
     
     /**
-     * Constructeur
-     * 
+     * Constructeur qui crée un sprite avec les images
+     * dont les URLs sont données dans le tableau en argument.
      * @param url de type String[]
      */
     private SoldatEnum(String url[]) {
-         this.sprite = new ISprite(url);
+         this.sprite = new Sprite(url);
     }
 
-    public ISprite getSprite() {
+    /**
+     * Accesseur du sprite.
+     * @return Le sprite demandé.
+     */
+    public Sprite getSprite() {
         return sprite;
     }
     

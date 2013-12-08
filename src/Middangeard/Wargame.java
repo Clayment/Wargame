@@ -14,28 +14,33 @@
 
 package Middangeard;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Team 7
  */
 public class Wargame {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // Initialisation de la carte
         System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
         Carte map = new Carte();
-        FrameJeu F = new FrameJeu(map);
-        map.setFog();
-        
+        FrameJeu F = new FrameJeu(map);        
+        JOptionPane Finish = new JOptionPane();
         
         /* Gestion des tours */
         while(!map.fini()){
-            /* Tour des Héros */
-            
-            // Attente de l'appui sur "fin du tour"
+            ;
         }
-    }    
+        if(map.herosVaincus()){      
+            String mess = "Défaite...";
+            mess += "Vous voulez faire une nouvelle partie ? Appuyez sur Ctrl+n pour ça. ;) ";
+            Finish.showMessageDialog(null, mess, "Failure...", JOptionPane.INFORMATION_MESSAGE, null);
+        }
+        else{      
+            String mess = "Victoire !";
+            mess += "Vous voulez faire une nouvelle partie ? Appuyez sur Ctrl+n pour ça. ;) ";
+            Finish.showMessageDialog(null, mess, "Victory !", JOptionPane.INFORMATION_MESSAGE, null);
+        }
+    }
 }

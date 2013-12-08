@@ -44,6 +44,14 @@ public class Monstre extends Soldat{
         return(pv + "/" + maxPv + "pv " + this.race.name());
     }
     
+    /**
+     * Méthode mettant en place le tour des ennemis,
+     * attaquer une cible si elle est dans la portée,
+     * se soigner si la vie descend en dessous d'un seuil critique,
+     * et se déplacer sinon.
+     * @param L ArrayList contenant les cases dans la portée du monstre.
+     * @param m Map.
+     */
     public void mouvMonstre(ArrayList<Element> L, Carte m){
         for(Element E : L){
             if(!E.estLibre()){
@@ -53,13 +61,18 @@ public class Monstre extends Soldat{
                 }
             }
         }
-        if(this.getPoints() < this.getMaxPoints()){
+        if(this.getPoints() < (int) ((this.getMaxPoints())/4)){
             this.guerir();
         }
         else{
-            int j = (int) (Math.random()) * L.size();
+            int j = (int) ((Math.random()) * L.size());
+            while(!L.get(j).estLibre()){
+                j = (int) ((Math.random()) * L.size());
+            }
             Position Posi = new Position(L.get(j).getPos().getX(), L.get(j).getPos().getY());
+            m.getElement(this.getPos()).enleveSoldat();
             this.seDeplace(Posi);
+            m.getElement(Posi).ajouteSoldat(this);
         }
     }
 }
